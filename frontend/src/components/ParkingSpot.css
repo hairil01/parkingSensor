@@ -1,0 +1,135 @@
+/* Increase size of parking card */
+.parking-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 20px;
+  width: 350px;  /* Make the parking card bigger */
+  text-align: center;
+  height: 350px; /* Increased height for better visual balance */
+}
+
+/* Update header size */
+.parking-card h2 {
+  font-size: 28px; /* Make header bigger */
+  margin-bottom: 15px;
+}
+
+/* Distance font size and margin adjustments */
+.distance {
+  font-size: 22px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Parking spot container (increase height and width) */
+.spot {
+  height: 200px;  /* Increased height */
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 12px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Styling for occupied and free spots */
+.spot.occupied {
+  background-color: #ffcccc; /* Light red when occupied */
+}
+
+.spot.free {
+  background-color: #c1ffc1; /* Light green when free */
+}
+
+/* Car image size adjustment */
+.car-img {
+  width: 50%;  /* Adjusted size to fit better in the parking spot */
+  height: auto;
+  position: absolute;
+  bottom: 10px;  /* Keep it at the bottom of the parking box */
+  object-fit: contain;
+}
+
+/* Status text and style adjustments */
+.status {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.status.green {
+  color: #28a745; /* Green for free */
+}
+
+.status.red {
+  color: #ff4d4d; /* Red for occupied */
+}
+
+/* ParkingSpot.css */
+
+/* Smooth transition for the car entering */
+.spot.occupied {
+  background-color: #ffcccc; /* Light red when occupied */
+  position: relative;
+  overflow: hidden;
+}
+
+.car-img {
+  width: 50%;
+  height: auto;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  object-fit: contain;
+  transition: all 0.3s ease-in-out; /* Add transition effect */
+}
+
+/* Fun car "entering" animation */
+.spot.occupied .car-img {
+  animation: moveCar 1.5s ease-in-out forwards;
+}
+
+@keyframes moveCar {
+  0% {
+    transform: translateX(-50%) translateY(100px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ParkingSpot.css */
+
+/* Status text with fun animations */
+.status {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  animation: statusChange 1.5s ease-in-out;
+}
+
+.status.green {
+  color: #28a745;
+}
+
+.status.red {
+  color: #ff4d4d;
+}
+
+@keyframes statusChange {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
