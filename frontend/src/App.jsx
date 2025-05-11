@@ -9,20 +9,21 @@ function App() {
   });
 
   useEffect(() => {
-    const fetchData = () => {
-      fetch('http://ec2-52-64-11-13.ap-southeast-2.compute.amazonaws.com:5000/api/sensors')
-        .then((res) => res.json())
-        .then((json) => {
-          setData(json);
-        })
-        .catch((err) => console.error('API error:', err));
-    };
+  const fetchData = () => {
+    fetch('http://ec2-52-64-11-13.ap-southeast-2.compute.amazonaws.com:5000/api/sensors')
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+      })
+      .catch((err) => console.error('API error:', err));
+  };
 
-    fetchData(); // Initial fetch
-    const interval = setInterval(fetchData, 1000); // Refresh every 1 seconds
+  fetchData(); // Initial fetch
+  const interval = setInterval(fetchData, 1000); // Refresh every 1 second
 
-    return () => clearInterval(interval);
-  }, [data]);
+  return () => clearInterval(interval);
+}, []); // ✅ Fix: empty array here
+
 
   return (
     <div className="App">
