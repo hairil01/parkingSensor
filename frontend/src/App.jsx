@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = () => {
-      fetch('http://192.168.100.13:5000/api/sensors')
+      fetch('http://ec2-52-64-11-13.ap-southeast-2.compute.amazonaws.com:5000/api/sensors')
         .then((res) => res.json())
         .then((json) => {
           setData(json);
