@@ -1,13 +1,27 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
-from serial_reader import get_sensor_data
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for React frontend
+CORS(app)  # Allow cross-origin requests
 
-@app.route('/api/sensors')
-def sensors():
-    return jsonify(get_sensor_data())
+# Store the latest sensor data
+last_data = {
+    "sensor1": {"distance": "No Data", "occupied": False},
+    "sensor2": {"distance": "No Data", "occupied": False}
+}
+
+@app.route('/api/sensors', methods=['GET'])
+def get_sensor_data():
+    return jsonify(last_data)
+
+@app.route('/api/sensors', methods=['POST'])
+def update_sensor_data():
+    global last_data
+    if request.is_json:
+        data = request.get_json()
+        last_data = data
+        return jsonify({"status": "success"}), 200
+    return jsonify({"error": "Invalid JSON"}), 400
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

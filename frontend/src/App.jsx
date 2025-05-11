@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = () => {
-      fetch('http://127.0.0.1:5000/api/sensors')
+      fetch('http://192.168.100.13:5000/api/sensors')
         .then((res) => res.json())
         .then((json) => {
           setData(json);
@@ -29,12 +29,12 @@ function App() {
       <h1>🚗 Smart Parking Lot</h1>
       <div className="parking-container">
         <ParkingSpot
-          name="Sensor 1"
+          name="Parking 1"
           distance={data.sensor1.distance}
           occupied={data.sensor1.occupied}
         />
         <ParkingSpot
-          name="Sensor 2"
+          name="Parking 2"
           distance={data.sensor2.distance}
           occupied={data.sensor2.occupied}
         />
